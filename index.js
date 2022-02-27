@@ -42,13 +42,16 @@ function clockRunning() {
     var currentTime = new Date();
     var timeElapsed = new Date(currentTime - timeBegan - stoppedDuration);
 
+    var hours = timeElapsed.getUTCHours();
     var minutes = timeElapsed.getUTCMinutes();
     var seconds = timeElapsed.getUTCSeconds();
     var milliseconds = timeElapsed.getUTCMilliseconds();
 
     milliseconds = Math.floor(milliseconds/10); // to get only the first 2 digits
     
-    timerDisplay.innerHTML = (minutes = minutes < 10 ? '0' + minutes : minutes) + ':' +
+    timerDisplay.innerHTML =
+        (hours = hours < 10 ? '0' + hours : hours) + ':' +
+        (minutes = minutes < 10 ? '0' + minutes : minutes) + ':' +
         (seconds = seconds < 10 ? '0' + seconds : seconds) + ':' +
         (milliseconds = milliseconds < 10 ? '0' + milliseconds : milliseconds);  
 }
